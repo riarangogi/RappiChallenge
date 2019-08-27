@@ -28,3 +28,16 @@ def plotNumericData(variable, title):
 	numericData[variable].plot(kind="box")
 
 	plt.show()
+
+
+plotNumericData("to_user_distance", "de la distancia al usuario")
+
+plotNumericData("to_user_elevation", "de la diferencia en altura del usuario")
+
+plotNumericData("total_earning", "del valor por el servicio de mensajeria")
+
+plt.title("Cantidad de ordenes aceptadas y ordenes no tomadas")
+takenTable = data["taken"].value_counts()
+takenTable.plot(kind="bar")
+plt.show()
+
