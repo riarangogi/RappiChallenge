@@ -7,11 +7,13 @@ OS: elementary OS 5.0 Juno (64-bit), Basado en Ubuntu 18.04.2 LTS
 Python Version: Anaconda 3.7.3
 """
 import pandas as pd
+import datetime as dt
 import matplotlib.pyplot as plt
 
 data = pd.read_csv("./Data/Raw/orders.csv")
+data["created_at"] = pd.to_datetime(data["created_at"])
 print(data.head())
-print(data.columns)
+print(data.info())
 
 numericData = data[["to_user_distance", "to_user_elevation", "total_earning"]]
 print(numericData.describe())
@@ -41,3 +43,7 @@ takenTable = data["taken"].value_counts()
 takenTable.plot(kind="bar")
 plt.show()
 
+plt.title("Cantidad de solicitudes por día")
+dateTable = data["created_at"].dt.weekday.value_counts()
+dateTable.plot(kind="bar")
+plt.show()
