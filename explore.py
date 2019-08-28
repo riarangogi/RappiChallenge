@@ -51,12 +51,12 @@ plt.show()
 
 #grafica de barras de la cantidad de servicios por dia
 plt.title("Cantidad de solicitudes por día")
-dateTable = data["created_at"].dt.weekday.value_counts()
-dateTable.plot(kind="bar")
+dayTable = pd.crosstab(columns=data["taken"], index=data["created_at"].dt.weekday)
+dayTable.plot(kind="bar", stacked=True)
 plt.show()
 
 #grafica de barras de la cantidad de servicios por hora
 plt.title("Cantidad de solicitudes por hora")
-dateTable = data["created_at"].dt.hour.value_counts()
-dateTable.plot(kind="bar")
+hourTable = pd.crosstab(index=data["created_at"].dt.hour, columns=data["taken"])
+hourTable.plot(kind="bar", stacked=True)
 plt.show()
