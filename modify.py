@@ -12,6 +12,7 @@ import numpy as np
 data = pd.read_csv("./Data/Raw/orders.csv")
 data["created_at"] = pd.to_datetime(data["created_at"])
 data["hour"] = data["created_at"].dt.hour
+data["primeTime"] = np.where((data["hour"]<=19) & (data["hour"]>=11), 1, 0)
 tmp = []
 
 print(data.info())
@@ -41,11 +42,11 @@ print(len(tmp))"""
 
 for i in range(len(data)):
 	if (data.loc[i, "to_user_distance"]>=LS):
-		tmp.append(toUserDistanceMedian)
+		data.loc[i, "toUserDistance"] = toUserDistanceMedian
 	if (data.loc[i, "to_user_distance"]<=LI):
-		tmp.append(toUserDistanceMedian)
+		data.loc[i, "toUserDistance"] = toUserDistanceMedian
 	else:
-		tmp.append(data.loc[i,"to_user_distance"])
 
-print(len(tmp))
+		data.loc[i, "toUserDistance"] = data.loc[i,"to_user_distance"]
+
 print(data.head())
