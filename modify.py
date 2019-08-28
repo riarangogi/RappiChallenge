@@ -37,7 +37,7 @@ for i in range(len(df)):
 
 print(col)
 
-"""
+print(len(tmp))"""
 
 for i in range(len(data)):
 	if (data.loc[i, "to_user_distance"]>=LS):
