@@ -56,4 +56,5 @@ for i in range(len(data)):
 		data.loc[i, "totalEarning"] = data.loc[i,"total_earning"]
 
 
-print(data.head())
+dfFile = data[["taken", "primeTime", "toUserDistance", "toUserElevation", "totalEarning"]]
+dfFile.to_csv("./Data/Tidy/dfFile.csv", index=False)
