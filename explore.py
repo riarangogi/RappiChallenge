@@ -44,19 +44,28 @@ plotNumericData("to_user_elevation", "de la diferencia en altura del usuario")
 plotNumericData("total_earning", "del valor por el servicio de mensajeria")
 
 #grafica de barras de la variable taken
-plt.title("Cantidad de ordenes aceptadas y ordenes no tomadas")
 takenTable = data["taken"].value_counts()
 takenTable.plot(kind="bar")
 plt.show()
 
 #grafica de barras de la cantidad de servicios por dia
-plt.title("Cantidad de solicitudes por día")
 dayTable = pd.crosstab(columns=data["taken"], index=data["created_at"].dt.weekday)
 dayTable.plot(kind="bar", stacked=True)
 plt.show()
 
 #grafica de barras de la cantidad de servicios por hora
-plt.title("Cantidad de solicitudes por hora")
 hourTable = pd.crosstab(index=data["created_at"].dt.hour, columns=data["taken"])
 hourTable.plot(kind="bar", stacked=True)
+plt.show()
+
+#ggrafca distancia vs altura
+plt.scatter(data["to_user_distance"], data["to_user_elevation"], c=data["taken"])
+plt.xlabel("Distancia (km)")
+plt.ylabel("Altura (m)")
+plt.show()
+w
+#ggrafca distancia vs valor
+plt.scatter(data["to_user_distance"], data["total_earning"], c=data["taken"])
+plt.xlabel("Distancia (km)")
+plt.ylabel("Valor ($)")
 plt.show()
