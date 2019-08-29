@@ -42,17 +42,18 @@ for i in range(len(data)):
 		data.loc[i, "toUserElevation"] = data.loc[i,"to_user_elevation"]
 
 
-toUserElevationMedian = data["to_user_elevation"].median()
-IQR = data["to_user_elevation"].quantile(0.75)-data["to_user_elevation"].quantile(0.25)
-LS = data["to_user_elevation"].quantile(0.75)+1.5*IQR
-LI = data["to_user_elevation"].quantile(0.25)-1.5*IQR
+totalEarningMedian = data["total_earning"].median()
+IQR = data["total_earning"].quantile(0.75)-data["total_earning"].quantile(0.25)
+LS = data["total_earning"].quantile(0.75)+1.5*IQR
+LI = data["total_earning"].quantile(0.25)-1.5*IQR
 
 for i in range(len(data)):
-	if (data.loc[i, "to_user_elevation"]>=LS):
-		data.loc[i, "toUserElevation"] = toUserElevationMedian
-	if (data.loc[i, "to_user_elevation"]<=LI):
-		data.loc[i, "toUserElevation"] = toUserElevationMedian
+	if (data.loc[i, "total_earning"]>=LS):
+		data.loc[i, "totalEarning"] = totalEarningMedian
+	if (data.loc[i, "total_earning"]<=LI):
+		data.loc[i, "totalEarning"] = totalEarningMedian
 	else:
-		data.loc[i, "toUserElevation"] = data.loc[i,"to_user_elevation"]
+		data.loc[i, "totalEarning"] = data.loc[i,"total_earning"]
 
 
+print(data.head())
