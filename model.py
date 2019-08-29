@@ -19,7 +19,7 @@ np.random.seed(47)
 df =  pd.read_csv("./Data/Tidy/dfFile.csv")
 
 y = df["taken"]
-X = df.drop("taken", axis=1)
+X = df.drop(["taken", "toUserElevation"], axis=1)
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3, random_state=47)
 
 logreg = LogisticRegression()
@@ -29,7 +29,7 @@ y_pred=logreg.predict(X_test)
 y_pred_proba = logreg.predict_proba(X_test)[::,1]
 fpr, tpr, _ = metrics.roc_curve(y_test,  y_pred_proba)
 auc = metrics.roc_auc_score(y_test, y_pred_proba)
-plt.plot(fpr,tpr,label="modelo 1, auc="+str(auc))
+plt.plot(fpr,tpr,label="modelo 2, auc="+str(auc))
 plt.legend(loc=4)
 plt.show()
 
