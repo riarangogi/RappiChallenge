@@ -1,4 +1,7 @@
 Data/
+*.log
+*.aux
+*.gz
 *.pdf
 *.swp
 *.un~
