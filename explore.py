@@ -63,7 +63,23 @@ plt.scatter(data["to_user_distance"], data["to_user_elevation"], c=data["taken"]
 plt.xlabel("Distancia (km)")
 plt.ylabel("Altura (m)")
 plt.show()
-w
+
+#ggrafca distancia vs altura
+plt.scatter(data.loc[data["taken"]==0, "to_user_distance"], 
+		data.loc[data["taken"]==0, "to_user_elevation"], c="blue")
+plt.xlabel("Distancia (km)")
+plt.ylabel("Altura (m)")
+plt.title("Gráfica de distancia vs altura en los servicios no aceptados")
+plt.show()
+
+#ggrafca distancia vs altura
+plt.scatter(data.loc[data["taken"]==1, "to_user_distance"], 
+		data.loc[data["taken"]==1, "to_user_elevation"], c="yellow")
+plt.xlabel("Distancia (km)")
+plt.ylabel("Altura (m)")
+plt.title("Gráfica de distancia vs altura en los servicios aceptados")
+plt.show()
+
 #ggrafca distancia vs valor
 plt.scatter(data["to_user_distance"], data["total_earning"], c=data["taken"])
 plt.xlabel("Distancia (km)")
